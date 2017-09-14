@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import router from './server/router';
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/cinemas');
+mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds161471.mlab.com:61471/cinema`);
 
 // Initialize http server
 const app = express();
