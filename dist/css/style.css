@@ -1,0 +1,35 @@
+body {
+    margin-top: 60px;
+    background-color: black;
+}
+
+.default-card-font {
+    font-size: 10px;
+}
+
+.card-block-modified {
+    padding: 10px 10px;
+}
+
+.column-modified {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.back-button-modified {
+    width: 50px;
+    padding: 5px 10px;
+}
+
+.back-button-image-modified {
+    width: 20px;
+}
+
+.dark-navbar-modified {
+    background-color: black;
+}
+
+.navbar-brand-modified {
+    width: 280px;
+    color: white !important;
+}

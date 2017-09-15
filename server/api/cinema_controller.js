@@ -13,7 +13,7 @@ export const getCinemaList = (req, res, next) => {
         let totalSize = JSON.stringify(cinemas.total || 0);
         let pageSize = JSON.stringify(cinemas.docs.length || 0);
 
-        let modifiedDocs = _.map(cinemas.docs, (o) => { return _.pick(o, 'name', 'poster-image'); });
+        let modifiedDocs = _.map(cinemas.docs, (o) => { return _.pick(o, 'name', 'poster-image', '_id'); });
 
         res.json(
           {

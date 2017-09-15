@@ -1,31 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileHeader from './profile-header';
-import ImageContainer from './image-container';
-import Spinner from './spinner';
 import { getImages } from '../action-creators';
+import { Row, Col, Container } from 'reactstrap';
+
+import CardContainer from './CardContainer';
  
 export class Home extends React.Component {
  
-    componentDidMount() {
+    componentWillMount() {
         this.props.getImages();
     }
     render() {
+        var listItems = this.props.cinemaList.map(function(item) {
+            return (
+                <Col className="column-modified" xs={4} key={item.getIn(['_id'])}>
+                    <CardContainer cinemaName={item}></CardContainer>
+                </Col>
+            );
+        });
+
         return (
-            <div>
-                <ProfileHeader />
-                {this.props.isLoading ?
-                    <Spinner /> :
-                    <ImageContainer imageList={this.props.imageList} />
-              }
-            </div>
+            <Container>
+                <Row>
+                    {listItems}
+                </Row>
+            </Container>
         );
     }
 }
  
 function mapStateToProps(state) {
   return {
-    imageList: state.get('imageList').toJS(),
+    totalContentItems: state.get('totalContentItems'),
+    pageNumRequested: state.get('pageNumRequested'),
+    pageSizeRequested: state.get('pageSizeRequested'),
+    pageSizeReturned: state.get('pageSizeReturned'),
+    cinemaList: state.get('cinemaList'),
     isLoading: state.getIn(['view', 'isLoading'])
   };
 }
