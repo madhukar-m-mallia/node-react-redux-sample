@@ -9,15 +9,15 @@ import {
  
 const API_URL = 'http://localhost:8080/';
  
-const getFromServer = () => {
-    return fetch(API_URL + 'api/getCinemas?pageNumber=3&pageSize=20')
+const getFromServer = (pageNumber, countToDisplay) => {
+    return fetch(API_URL + `api/getCinemas?pageNumber=${pageNumber}&pageSize=${countToDisplay}`)
         .then(response => response.json());
 }
 
-function* loadImages () {
+function* loadImages (a) {
   try {
     yield delay(1000);
-    const cinemaList = yield getFromServer();
+    const cinemaList = yield getFromServer(a.pageNumber, a.numRequested);
     yield put({ type: 'GET_IMAGES_SUCCESS', payload: cinemaList });
   } catch (error) {
     yield put({ type: 'GET_IMAGES_FAILURE' });

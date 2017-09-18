@@ -10,9 +10,9 @@ export default class CardContainer extends React.Component {
         const cinema = this.props.cinemaName;
         return (
             <Card>
-                <CardImage url={cinema.getIn(['poster-image'])}></CardImage> 
+                <CardImage url={cinema['poster-image']}></CardImage> 
                 <CardBlock className="card-block-modified">
-                    <CardSubtitle className="default-card-font">{cinema.getIn(['name'])}</CardSubtitle>
+                    <CardSubtitle className="default-card-font">{cinema['name']}</CardSubtitle>
                 </CardBlock>
             </Card>
         );
